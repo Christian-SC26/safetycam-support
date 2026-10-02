@@ -8,5 +8,5 @@ Official public web portal for [Safety Cam](https://apps.apple.com/app/id6741706
 - **Terms of Use**: [https://christian-sc26.github.io/safetycam-support/terms.html](https://christian-sc26.github.io/safetycam-support/terms.html)
 
 ## 📬 Contact
-- **Email**: [haritonova20010122@gmail.com](mailto:haritonova20010122@gmail.com)
-- **Telegram**: [@SafetyCamApp](https://t.me/SafetyCamApp)
+- **Email**: [workflow1374@gmail.com](mailto:workflow1374@gmail.com)
+- **Telegram Bot**: [@SafetyCamFeedbackBot](https://t.me/SafetyCamFeedbackBot)
