@@ -480,8 +480,8 @@
             </a>
             <div class="nav-actions">
                 <div class="lang-switch">
-                    <button class="lang-btn active" onclick="setLanguage('ru')">RU</button>
-                    <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" id="btnRu" onclick="setLanguage('ru')">RU</button>
+                    <button class="lang-btn active" id="btnEn" onclick="setLanguage('en')">EN</button>
                 </div>
             </div>
         </div>
@@ -502,10 +502,10 @@
         <section class="contact-grid">
             <div class="contact-card">
                 <div class="contact-icon icon-email">✉️</div>
-                <h3 data-i18n="contact_email_title">Прямой Email</h3>
-                <p data-i18n="contact_email_desc">Напишите напрямую разработчику для получения персональной помощи или сообщения о баге.</p>
-                <a href="mailto:sokolnumber1@gmail.com?subject=Safety%20Cam%20Support" class="contact-btn">
-                    <span>sokolnumber1@gmail.com</span>
+                <h3 data-i18n="contact_email_title">Direct Email</h3>
+                <p data-i18n="contact_email_desc">Send an email directly to the developer for personalized technical assistance or bug reports.</p>
+                <a href="mailto:haritonova20010122@gmail.com?subject=Safety%20Cam%20Support" class="contact-btn">
+                    <span>haritonova20010122@gmail.com</span>
                 </a>
             </div>
 
@@ -629,7 +629,7 @@
             <div class="footer-links">
                 <a href="privacy.html" data-i18n="footer_privacy">Политика конфиденциальности</a>
                 <a href="terms.html" data-i18n="footer_terms">Условия использования</a>
-                <a href="mailto:sokolnumber1@gmail.com">sokolnumber1@gmail.com</a>
+                <a href="mailto:haritonova20010122@gmail.com">haritonova20010122@gmail.com</a>
             </div>
         </div>
     </footer>
@@ -723,15 +723,19 @@
             }
         };
 
-        let currentLang = 'ru';
+        let currentLang = localStorage.getItem('preferredLang') || 'en';
 
         function setLanguage(lang) {
             currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
             document.documentElement.lang = lang;
             
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
-            });
+            const btnRu = document.getElementById('btnRu');
+            const btnEn = document.getElementById('btnEn');
+            if (btnRu && btnEn) {
+                btnRu.classList.toggle('active', lang === 'ru');
+                btnEn.classList.toggle('active', lang === 'en');
+            }
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -758,8 +762,11 @@
                 `\nDescription:\n${message}\n\n---\nSent via Safety Cam Web Support Portal`
             );
 
-            window.location.href = `mailto:sokolnumber1@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:haritonova20010122@gmail.com?subject=${subject}&body=${body}`;
         }
+
+        // Initialize on load with saved or default language
+        setLanguage(currentLang);
     </script>
 </body>
 </html>
